@@ -1,0 +1,58 @@
+#+TITLE: embed-pdf-fonts
+#+AUTHOR: Michael Fiedler <dev@michael-fiedler.net>
+
+* Description
+
+~embed-pdf-fonts~ embeds fonts referenced from an existing PDF document as a
+font subset, following [[http://www.freedesktop.org/wiki/Software/fontconfig/][Fontconfig]] font substitution settings.
+
+If all fonts referenced from a PDF file are embedded, the display quality of
+the document will not depend on the availability of the used fonts at the
+viewer's computer any more.  Moreover, Fontconfig settings such as font
+substitutions are respected during processing.  This way, fonts that are not
+available on a system and cause display problems for an existing PDF document
+can be replaced so the problem does not occur any more on other systems
+missing the referenced fonts, too.  If a font is fully embedded in the input
+PDF, it will be reduced to the subset of used symbols, reducing file size.
+
+Note: It is also possible to use Poppler utilities for this purpose
+(~pdftocairo~).
+
+
+* Usage
+
+#+BEGIN_EXAMPLE
+embed-pdf-fonts input.pdf output.pdf
+#+END_EXAMPLE
+
+
+* Dependencies
+
+  - [[http://cairographics.org/][Cairo]]
+  - [[http://poppler.freedesktop.org/][Poppler]] (GLib interface)
+
+On a Debian-based Linux system, you can install these via
+
+#+BEGIN_EXAMPLE
+sudo apt-get install libcairo2-dev libpoppler-glib-dev
+#+END_EXAMPLE
+
+
+* Installation
+
+#+BEGIN_EXAMPLE
+make
+sudo make install
+#+END_EXAMPLE
+
+
+* License
+
+This project is released under the terms of the GNU General Public License
+version 3 or later.  See the file ~LICENSE_GPL-3~ for the full license text.
+
+
+* Contact
+
+File a new issue at https://github.com/mfiedler/embed-pdf-fonts/issues or
+write an email to ~dev %AT% michael-fiedler %DOT% net~
